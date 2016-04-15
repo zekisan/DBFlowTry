@@ -12,6 +12,8 @@ import com.raizlabs.android.dbflow.structure.container.ForeignKeyContainer;
 @Table(database = DemoDatabase.class)
 public class Ant extends BaseModel{
 
+    //region Members
+
     @PrimaryKey(autoincrement = true)
     long id;
 
@@ -25,11 +27,13 @@ public class Ant extends BaseModel{
     @ForeignKey(saveForeignKeyModel = false)
     ForeignKeyContainer<Queen> queenForeignKeyContainer;
 
+    //endregion
+
+    //region Methods
     // Example of setting the model for the queen
     public void associateQueen(Queen queen){
-        queenForeignKeyContainer = FlowManager.getContainerAdapter(Queen.class).toForeignKeyContainer(queen);
+        queenForeignKeyContainer = FlowManager.getContainerAdapter(Queen.class)
+                .toForeignKeyContainer(queen);
     }
-
-
-
+    //endregion
 }

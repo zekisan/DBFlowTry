@@ -16,6 +16,7 @@ import java.util.List;
 @Table(database = DemoDatabase.class)
 public class Queen extends BaseModel{
 
+    //region Members
     @PrimaryKey(autoincrement = true)
     long id;
 
@@ -27,7 +28,9 @@ public class Queen extends BaseModel{
     Colony colony;
 
     List<Ant> ants;
+    //endregion
 
+    //region Methods
     @OneToMany(methods = { OneToMany.Method.SAVE, OneToMany.Method.DELETE }, variableName = "ants")
     public List getMyAnts() {
         if(ants == null || ants.isEmpty()){
@@ -38,4 +41,5 @@ public class Queen extends BaseModel{
         }
         return ants;
     }
+    //endregion
 }

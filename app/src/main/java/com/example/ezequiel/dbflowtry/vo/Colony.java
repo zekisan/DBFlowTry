@@ -14,11 +14,17 @@ import com.raizlabs.android.dbflow.structure.BaseModel;
 @Table(database = DemoDatabase.class)
 public class Colony extends BaseModel implements Validation {
 
+    // region Members
+
     @PrimaryKey(autoincrement = true)
     long id;
 
     @Column
     String name;
+
+    // endregion Members
+
+    // region Accessors
 
     public String getName() {
         return name;
@@ -28,10 +34,14 @@ public class Colony extends BaseModel implements Validation {
         this.name = name;
     }
 
+    // endregion Accessors
+
+    //region Inherited Methods
     @Override
     public void validate() {
         if(!StringUtils.isNotNullOrEmpty(name)){
             throw new ValidationFailException("Nome da Colônia não pode ser nulo.");
         }
     }
+    //endregion
 }
